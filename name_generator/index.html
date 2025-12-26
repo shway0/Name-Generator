@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antigravity Name Forge | Dynamic Name Generator</title>
+    <meta name="description"
+        content="AI-cliché-free name generator for fiction writers. Generate unique names for characters, aliens, monsters, places, and terms using linguistic algorithms.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">⚗️</span>
+                <h1>Name Forge</h1>
+            </div>
+            <p class="tagline">Zero AI Clichés. Infinite Possibilities.</p>
+        </header>
+
+        <!-- Main Controls -->
+        <main class="main-content">
+            <!-- Category Selection - NOW MULTI-SELECT -->
+            <section class="category-section">
+                <h2 class="section-title">Select Categories <span class="hint">(pick multiple to mix)</span></h2>
+                <div class="category-grid">
+                    <button class="category-btn active" data-category="human">
+                        <span class="cat-icon">👤</span>
+                        <span class="cat-label">Human</span>
+                        <span class="check-mark">✓</span>
+                    </button>
+                    <button class="category-btn" data-category="alien">
+                        <span class="cat-icon">👽</span>
+                        <span class="cat-label">Alien</span>
+                        <span class="check-mark">✓</span>
+                    </button>
+                    <button class="category-btn" data-category="fantasy">
+                        <span class="cat-icon">🧝</span>
+                        <span class="cat-label">Fantasy</span>
+                        <span class="check-mark">✓</span>
+                    </button>
+                    <button class="category-btn" data-category="monster">
+                        <span class="cat-icon">👹</span>
+                        <span class="cat-label">Monster</span>
+                        <span class="check-mark">✓</span>
+                    </button>
+                    <button class="category-btn" data-category="place">
+                        <span class="cat-icon">🏰</span>
+                        <span class="cat-label">Place</span>
+                        <span class="check-mark">✓</span>
+                    </button>
+                    <button class="category-btn" data-category="term">
+                        <span class="cat-icon">📜</span>
+                        <span class="cat-label">Term</span>
+                        <span class="check-mark">✓</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Global Controls -->
+            <section class="global-controls">
+                <div class="control-row">
+                    <!-- Syllable Slider -->
+                    <div class="control-group syllable-control">
+                        <label>Syllables: <span id="syllable-value">2-3</span></label>
+                        <div class="dual-slider">
+                            <input type="range" id="syllable-min" min="1" max="5" value="2" class="slider">
+                            <input type="range" id="syllable-max" min="1" max="5" value="3" class="slider">
+                        </div>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="control-group">
+                        <label>Gender</label>
+                        <select id="gender-select">
+                            <option value="any">Any</option>
+                            <option value="masculine">Masculine</option>
+                            <option value="feminine">Feminine</option>
+                            <option value="neutral">Neutral</option>
+                        </select>
+                    </div>
+
+                    <!-- Era/Setting -->
+                    <div class="control-group">
+                        <label>Era/Setting</label>
+                        <select id="era-select">
+                            <option value="any">Any</option>
+                            <option value="ancient">Ancient</option>
+                            <option value="medieval">Medieval</option>
+                            <option value="regency">Regency (1800s)</option>
+                            <option value="victorian">Victorian</option>
+                            <option value="1920s">1920s</option>
+                            <option value="1950s">1950s</option>
+                            <option value="1980s">1980s</option>
+                            <option value="contemporary">Contemporary</option>
+                            <option value="futuristic">Futuristic</option>
+                        </select>
+                    </div>
+
+                    <!-- Culture/Origin -->
+                    <div class="control-group">
+                        <label>Culture/Origin</label>
+                        <select id="culture-select">
+                            <option value="any">Any</option>
+                            <option value="western">Western/European</option>
+                            <option value="african">African</option>
+                            <option value="middleeastern">Middle Eastern</option>
+                            <option value="eastasian">East Asian</option>
+                            <option value="southasian">South Asian</option>
+                            <option value="latinamerican">Latin American</option>
+                            <option value="slavic">Slavic</option>
+                            <option value="nordic">Nordic</option>
+                            <option value="celtic">Celtic</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-row">
+                    <!-- Tone -->
+                    <div class="control-group">
+                        <label>Tone</label>
+                        <select id="tone-select">
+                            <option value="any">Any</option>
+                            <option value="noble">Noble/Elegant</option>
+                            <option value="fierce">Fierce/Strong</option>
+                            <option value="dark">Dark/Sinister</option>
+                            <option value="whimsical">Whimsical/Light</option>
+                            <option value="mysterious">Mysterious</option>
+                            <option value="ancient">Ancient/Arcane</option>
+                        </select>
+                    </div>
+
+                    <!-- Include Surname -->
+                    <div class="control-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="include-surname" checked>
+                            Include Surname
+                        </label>
+                    </div>
+
+                    <!-- Include Title -->
+                    <div class="control-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="include-title">
+                            Include Title/Epithet
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Custom Input -->
+            <section class="custom-input-section">
+                <h3 class="subsection-title">Or describe what you need:</h3>
+                <textarea id="custom-input"
+                    placeholder="Example: 'A name for a female vampire from 1890s New Orleans, elegant but dangerous' or 'Historical alien warrior names mixing Victorian and reptilian sounds'"></textarea>
+            </section>
+
+            <!-- Generate Button -->
+            <div class="generate-section">
+                <button id="generate-btn" class="generate-btn">
+                    <span class="btn-icon">⚡</span>
+                    <span>FORGE NAMES</span>
+                </button>
+                <div class="quantity-control">
+                    <label>Generate:</label>
+                    <select id="quantity">
+                        <option value="5">5 names</option>
+                        <option value="10" selected>10 names</option>
+                        <option value="25">25 names</option>
+                        <option value="50">50 names</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <section class="results-section" id="results-section">
+                <div class="results-header">
+                    <h2 class="section-title">Forged Names</h2>
+                    <div class="results-actions">
+                        <button id="copy-all-btn" class="action-btn">📋 Copy All</button>
+                        <button id="regenerate-btn" class="action-btn">🔄 Regenerate</button>
+                    </div>
+                </div>
+                <div class="results-grid" id="results-grid">
+                    <!-- Names will be inserted here -->
+                </div>
+            </section>
+
+            <!-- Banned Names Panel - NOW EDITABLE -->
+            <section class="banned-section">
+                <button id="toggle-banned" class="toggle-banned-btn">
+                    <span>⛔ Manage Banned Names</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="banned-panel" id="banned-panel">
+                    <div class="banned-controls">
+                        <input type="text" id="new-banned-input" placeholder="Add name to ban...">
+                        <button id="add-banned-btn" class="add-btn">+ Add</button>
+                    </div>
+                    <p class="banned-intro">Click any name to remove it from the ban list:</p>
+                    <div class="banned-grid" id="banned-grid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Antigravity Name Forge — <em>Where generic AI names go to die.</em></p>
+        </footer>
+    </div>
+
+    <script src="generator.js"></script>
+</body>
+
+</html>
